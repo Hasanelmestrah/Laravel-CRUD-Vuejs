@@ -45,8 +45,9 @@
           
           <td>{{ users.id }}</td>
           <td>{{ users.name }}</td>
-          <td>{{ users.address }}</td>
-          <td>{{ users.phone }}</td>
+          <td>{{ users.email }}</td>
+          <td>{{ users.sex }}</td>
+          <td>{{ users.blood_type }}</td>
           <td>
             <button type="button" class="btn btn-warning" @click="edit(users)">Edit</button>
             <button type="button" class="btn btn-danger"  @click="remove(users)">Delete</button>
