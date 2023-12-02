@@ -5,23 +5,23 @@
                     
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" v-model="student.name" class="form-control"  placeholder="Student name">
+                        <input type="text" v-model="users.name" class="form-control"  placeholder="Username">
                     
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="text" v-model="student.address" class="form-control"  placeholder="email">
+                        <input type="text" v-model="users.email" class="form-control"  placeholder="email">
                     
                     </div>
                     
                     <div class="form-group">
                         <label>Sex</label>
-                        <input type="text" v-model="student.phone" class="form-control"  placeholder="sex">
+                        <input type="text" v-model="users.sex" class="form-control"  placeholder="sex">
                     
                     </div>
                      <div class="form-group">
                         <label>Blood Type</label>
-                        <input type="text" v-model="student.phone" class="form-control"  placeholder="blood type">
+                        <input type="text" v-model="users.blood_type" class="form-control"  placeholder="blood type">
                     
                     </div>
                     
@@ -37,19 +37,19 @@
       <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th scope="col">Sex</th>
-      <th scope="col">Blood Type</th>
+      <th scope="col">Blood_Type</th>
     </tr>
   </thead>
   <tbody>
-    <tr v-for="student in result" v-bind:key="student.id">
+    <tr v-for="users in result" v-bind:key="users.id">
           
-          <td>{{ student.id }}</td>
-          <td>{{ student.name }}</td>
-          <td>{{ student.address }}</td>
-          <td>{{ student.phone }}</td>
+          <td>{{ users.id }}</td>
+          <td>{{ users.name }}</td>
+          <td>{{ users.address }}</td>
+          <td>{{ users.phone }}</td>
           <td>
-            <button type="button" class="btn btn-warning" @click="edit(student)">Edit</button>
-            <button type="button" class="btn btn-danger"  @click="remove(student)">Delete</button>
+            <button type="button" class="btn btn-warning" @click="edit(users)">Edit</button>
+            <button type="button" class="btn btn-danger"  @click="remove(users)">Delete</button>
           </td>
         </tr>
     
@@ -64,22 +64,23 @@
    import axios from 'redaxios';
  
   export default {
-    name: 'Student',
+    name: 'users',
     data () {
       return {
         result: {},
-        student:{
+        users:{
                    id: '',
                    name: '',
-                   address: '',
-                   phone: ''
+                   email: '',
+                   sex: '',
+                   blood_type: ''
  
  
         }
       }
     },
     created() { 
-        this.StudentLoad();
+        this.UsersLoad();
     },
     mounted() {
           console.log("mounted() called.......");
@@ -87,9 +88,9 @@
       },
  
     methods: {
-           StudentLoad()
+           UsersLoad()
            {
-                 var page = "http://127.0.0.1:8000/api/student";
+                 var page = "http://127.0.0.1:8000/api/users";
                  axios.get(page)
                   .then(
                       ({data})=>{
@@ -102,7 +103,7 @@
           
            save()
            {
-            if(this.student.id == '')
+            if(this.users.id == '')
               {
                 this.saveData();
               }
@@ -114,51 +115,53 @@
            },
            saveData()
            {
-            axios.post("http://127.0.0.1:8000/api/student", this.student)
+            axios.post("http://127.0.0.1:8000/api/users", this.users)
             .then(
               ({data})=>{
                 alert("saveddddd");
-                this.StudentLoad();
-                 this.student.name = '';
-                  this.student.address = '',
-                  this.student.phone = ''
+                this.UsersLoadLoad();
+                 this.users.name = '';
+                  this.users.email = '',
+                  this.users.sex = '',
+                  this.users.blood_type = '',
                    this.id = ''
               }
             )
  
            },
-           edit(student)
+           edit(users)
            {
-            this.student = student;
+            this.users = users;
            
            },
            updateData()
            {
-              var editrecords = 'http://127.0.0.1:8000/api/student/'+ this.student.id;
-              axios.put(editrecords, this.student)
+              var editrecords = 'http://127.0.0.1:8000/api/users/'+ this.users.id;
+              axios.put(editrecords, this.users)
               .then(
                 ({data})=>{
-                  this.student.name = '';
-                  this.student.address = '',
-                  this.student.phone = ''
+                  this.users.name = '';
+                  this.users.email = '',
+                  this.users.sex = '',
+                  this.users.blood_type = ''
                   this.id = ''
                   alert("Updated!!!");
-                  this.StudentLoad();
+                  this.UsersLoad();
                 }
               );
  
            },
  
-           remove(student){
+           remove(users){
  
-             var url = `http://127.0.0.1:8000/api/student/${student.id}`;
+             var url = `http://127.0.0.1:8000/api/users/${users.id}`;
  
  
  
-             // var url = 'http://127.0.0.1:8000/api/student/'+ student.id;
+             // var url = 'http://127.0.0.1:8000/api/users/'+ users.id;
               axios.delete(url);
               alert("Deleteddd");
-              this.StudentLoad();
+              this.UsersLoad();
             }
       }
   }
