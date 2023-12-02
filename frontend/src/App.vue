@@ -4,6 +4,6 @@ import Users from './components/Users.vue'
 
 <template>
  
-  <users/>
+  <Users/>
 </template>
 

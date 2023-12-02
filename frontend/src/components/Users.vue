@@ -1,22 +1,27 @@
 <template>
     <div class ="container">
-      <h2>Student Registation</h2>
+      <h2>Users Registation</h2>
                     <form @submit.prevent="save">
                     
                     <div class="form-group">
-                        <label>Student name</label>
+                        <label>Name</label>
                         <input type="text" v-model="student.name" class="form-control"  placeholder="Student name">
                     
                     </div>
                     <div class="form-group">
-                        <label>Student Address</label>
-                        <input type="text" v-model="student.address" class="form-control"  placeholder="Student Address">
+                        <label>Email</label>
+                        <input type="text" v-model="student.address" class="form-control"  placeholder="email">
                     
                     </div>
                     
                     <div class="form-group">
-                        <label>Phone</label>
-                        <input type="text" v-model="student.phone" class="form-control"  placeholder="Phone">
+                        <label>Sex</label>
+                        <input type="text" v-model="student.phone" class="form-control"  placeholder="sex">
+                    
+                    </div>
+                     <div class="form-group">
+                        <label>Blood Type</label>
+                        <input type="text" v-model="student.phone" class="form-control"  placeholder="blood type">
                     
                     </div>
                     
@@ -24,15 +29,15 @@
                     </form>
  
  
-<h2>Employee View</h2>
+<h2>Admin Dashboard</h2>
       <table class="table table-dark">
   <thead>
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">Student Name</th>
-      <th scope="col">Address</th>
-      <th scope="col">Phone</th>
-      <th scope="col">Option</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Sex</th>
+      <th scope="col">Blood Type</th>
     </tr>
   </thead>
   <tbody>
