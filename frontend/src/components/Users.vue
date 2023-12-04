@@ -1,5 +1,5 @@
 <template>
-    <div class ="container">
+    <div class ="container" >
       <h2>Users Registation</h2>
                     <form @submit.prevent="save">
                     
@@ -29,6 +29,10 @@
                     </form>
  
  
+
+
+
+
 <h2>Admin Dashboard</h2>
       <table class="table table-dark">
   <thead>
@@ -37,7 +41,8 @@
       <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th scope="col">Sex</th>
-      <th scope="col">Blood_Type</th>
+      <th scope="col">Blood type</th>
+      <th scope="col">Edite</th>
     </tr>
   </thead>
   <tbody>
@@ -82,9 +87,11 @@
     },
     created() { 
         this.UsersLoad();
+        console.log("Data loaded:", this.result);
     },
     mounted() {
           console.log("mounted() called.......");
+          
          
       },
  
@@ -120,12 +127,13 @@
             .then(
               ({data})=>{
                 alert("saveddddd");
-                this.UsersLoadLoad();
-                 this.users.name = '';
-                  this.users.email = '',
-                  this.users.sex = '',
-                  this.users.blood_type = '',
-                   this.id = ''
+                  this.UsersLoad();
+                  this.users.id = '';
+                  this.users.name = '';
+                  this.users.email = '';
+                  this.users.sex = '';
+                  this.users.blood_type = '';
+                  
               }
             )
  
@@ -141,11 +149,11 @@
               axios.put(editrecords, this.users)
               .then(
                 ({data})=>{
+                  this.users.id = ''; 
                   this.users.name = '';
-                  this.users.email = '',
-                  this.users.sex = '',
-                  this.users.blood_type = ''
-                  this.id = ''
+                  this.users.email = '';
+                  this.users.sex = '';
+                  this.users.blood_type = '';
                   alert("Updated!!!");
                   this.UsersLoad();
                 }

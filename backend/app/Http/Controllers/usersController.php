@@ -20,14 +20,21 @@ class usersController extends Controller
 
     public function store(Request $request)
     {
-        return $this->users->create($request->all());
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'sex' => 'required',
+            'blood_type' => 'required',
+        ]);
+
+        return $this->users->create($validatedData);
     }
 
 
     public function show(string $id)
     {
 
-     return $users = $this->users->find($id);
+        return $this->users->find($id);
     }
 
 
