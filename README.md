@@ -2,7 +2,7 @@
 
 I hope you're doing well. I've been working hard on the task for the past three days, giving it my all to meet the requirements. Unfortunately, I ran into some problems that took more time to fix than I expected, so the work isn't as good as I'd like it to be.
 
-I know how important it is to do a great job, and I'm determined to make things right. If you decide to accept my internship application, I'll do everything I can to meet the company's needs.
+I understand the importance of delivering high-quality work, and I'm determined to make things right. If you decide to accept my internship application, I'll do everything I can to meet the company's needs.
 
 Thanks for understanding, and I'm excited about the possibility of contributing to the team.
 
